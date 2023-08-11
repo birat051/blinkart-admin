@@ -1,5 +1,5 @@
 {
-  "name": "blinkart-admin-panel",
+  "name": "blinkart_admin_panel",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,14 +9,32 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@hookform/resolvers": "^3.2.0",
     "@types/node": "20.4.9",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
+    "jsonwebtoken": "^9.0.1",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.2",
     "next": "13.4.13",
+    "next-auth": "^4.22.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.1.6"
+    "react-hook-form": "^7.45.4",
+    "react-loading-overlay-ts": "^2.0.2",
+    "styled-components": "^5.0.0",
+    "typescript": "5.1.6",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.26",
+    "@types/jsonwebtoken": "^9.0.2",
+    "babel-plugin-styled-components": "^2.1.3"
   }
+
 }
