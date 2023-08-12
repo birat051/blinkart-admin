@@ -1,6 +1,6 @@
-import { HomeContentContainer } from '@/styles/home.style'
+import { HomeContentContainer } from '@/styles/global.style'
 import { LoginPageForm } from '@/styles/login.style'
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -52,6 +52,11 @@ function LoginPage() {
     </LoadingOverlayWrapper>
 
   )
+}
+
+LoginPage.getLayout = function LoginPageLayout(page:ReactNode)
+{
+    return ({page})
 }
 
 export default LoginPage

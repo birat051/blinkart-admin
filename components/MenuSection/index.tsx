@@ -2,15 +2,18 @@ import React from 'react'
 import { MainPageLinkContainer, MenuLink, MenuLinkNav } from './MainPageLink.style'
 import UserNameSection from '../UserNameSection'
 import { useSession } from 'next-auth/react'
-import { faBagShopping, faBlog, faChartSimple, faCommentsDollar, faSquarePlus, faStore } from '@fortawesome/free-solid-svg-icons'
+import { faBagShopping, faBlog, faChartSimple, faCommentsDollar, faPowerOff, faSquarePlus, faStore } from '@fortawesome/free-solid-svg-icons'
 import { User } from 'next-auth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { RouteHelper } from '@/services/RouteHelper'
 import { useRouter } from 'next/router'
+import '../../util/FontAwesomeConfig'
+import { signOut } from 'next-auth/react'
 
 export interface CustomUser extends User {
   id: string;
   role: string;
+  seller:string;
 }
 
 function MainPageLinks() {
@@ -71,6 +74,9 @@ function MainPageLinks() {
       link: RouteHelper.getAddCategoryRoute()
     },
   ]
+  const signOutHandler=async ()=>{
+    await signOut()
+  }
   return (
     <MainPageLinkContainer>
         <UserNameSection email={session?.user?.email??''} name={session?.user?.name??''}/>
@@ -78,19 +84,23 @@ function MainPageLinks() {
           {userRole==="seller" && sellerMenulinks.map((link)=>{
               return (
                 <MenuLink key={link.label} className={router.pathname===link.link?'active':''}>
-                  <FontAwesomeIcon icon={link.icon}/>
-                  <MenuLinkNav href={link.link}>{link.label}</MenuLinkNav>
+                  <FontAwesomeIcon icon={link.icon}   style={{flex:1,width:'20px',height:'20px'}}/>
+                  <MenuLinkNav href={router.pathname!==link.link?link.link:'#'}>{link.label}</MenuLinkNav>
                 </MenuLink>
               )
           })}
           {userRole==="admin" && adminMenuLinks.map((link)=>{
               return (
                 <MenuLink key={link.label} className={router.pathname===link.link?'active':''}>
-                  <FontAwesomeIcon icon={link.icon}/>
-                  <MenuLinkNav href={link.link}>{link.label}</MenuLinkNav>
+                  <FontAwesomeIcon icon={link.icon}   style={{flex:1,width:'20px',height:'20px'}}/>
+                  <MenuLinkNav href={router.pathname===link.link?link.link:'#'}>{link.label}</MenuLinkNav>
                 </MenuLink>
               )
           })}
+          <MenuLink>
+            <FontAwesomeIcon icon={faPowerOff}   style={{flex:1,width:'20px',height:'20px'}}/>
+            <button onClick={signOutHandler}>Logout</button>
+          </MenuLink>
         </ul>
     </MainPageLinkContainer>
   )

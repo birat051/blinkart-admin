@@ -11,6 +11,7 @@ interface User {
   password: string;
   name: string;
   role: string;
+  seller: string | null
 }
 
 // console.log('Mongo URI is: ',mongoUri)
@@ -18,18 +19,23 @@ interface User {
 const authOptions: NextAuthOptions = {
   callbacks: {
     session: ({ session, token }) => {
-      // console.log('Token is: ',token)
+      console.log('Token is: ',token)
       return {
         ...session,
         user: {
           ...session.user,
           id: token.sub,
           role: token.role,
+          seller: token.seller
         },
       };
     },
     jwt({ token, user }) {
-      if(user) token.role = (user as User).role   
+      if(user)
+      {
+      token.role = (user as User).role 
+      token.seller =   (user as User).seller
+      }
       return token
     },
   },
@@ -71,7 +77,7 @@ const authOptions: NextAuthOptions = {
               // Generate token using your preferred JWT library
               // const secretKey = process.env.NEXTAUTH_SECRET;
               // const token = jwt.sign(tokenPayload, secretKey??'');
-              return { ...user, id: user._id.toString(),role:user.role };
+              return { ...user, id: user._id.toString(),role:user.role,seller:user.seller??'' };
             } else {
               throw new Error('Incorrect password');
             }

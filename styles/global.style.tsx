@@ -73,3 +73,35 @@ export const CustomButton = styled.button`
         padding: 10px;
     }
 `
+export const HomeContentContainer=styled.main`
+    min-height: 100vh;
+    background-color: white;
+    position: relative;
+    display: flex;
+    justify-content: stretch;
+`
+
+export const HomePageRightColumn=styled.div`
+    border: 0.1px solid grey;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex: 4;
+    background-color: rgb(240,242,246);
+    padding: 1rem;
+`
+
+
+export const ErrorContainer=styled(HomePageRightColumn)`
+     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+    align-items: center;
+    justify-content: center;
+    p{
+        font-size: 1em; 
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        color: black;
+    }
+`

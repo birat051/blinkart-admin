@@ -24,9 +24,6 @@ function PageHeader() {
             <ImageComponent>
                 <Image src={img} alt='Blinkart logo' height='25' onClick={()=>router.push('/')} style={{cursor: 'pointer'}} placeholder = 'blur' />
             </ImageComponent>
-            {/* <LoginButton /> */}
-            {status==="unauthenticated" && <button onClick={handleLoginClick}>Login</button>}
-            {status==="authenticated" && session && <button onClick={signOutHandler}>Signout</button>}
         </HeaderContainer>
     )
 }

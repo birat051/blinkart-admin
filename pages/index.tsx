@@ -1,10 +1,8 @@
 import Head from 'next/head'
-import { HomeContentContainer, HomePageRightColumn } from '@/styles/home.style'
-import MainPageLinks from '@/components/MenuSection'
-
-
+import {HomePageRightColumn } from '@/styles/global.style'
 
 export default function Home() {
+
   return (
     <>
       <Head>
@@ -13,12 +11,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HomeContentContainer>
-        <MainPageLinks/>
         <HomePageRightColumn>
-            
         </HomePageRightColumn>
-      </HomeContentContainer>
     </>
   )
 }
