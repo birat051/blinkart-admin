@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
+import { ProductCategory } from "./category_model";
 const { Schema,Model } = mongoose;
 
+const productcategory=require('./category_model')
+const seller=require('./seller_model')
 
 export interface Product extends Document
 {
@@ -8,7 +11,7 @@ export interface Product extends Document
     name: string,
     description: string,
     price: number,
-    category: mongoose.Schema.Types.ObjectId,
+    category: mongoose.Schema.Types.ObjectId | ProductCategory,
     brand: string,
     imageUrls: string[],
     seller: mongoose.Schema.Types.ObjectId,
@@ -18,7 +21,7 @@ export interface Product extends Document
     discount: number
 }
 
-const productDataSchema = new Schema({
+const ProductDataSchema = new Schema({
     name: {
       type: String,
       required: true
@@ -33,7 +36,7 @@ const productDataSchema = new Schema({
     },
     category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "ProductCategoryModel",
+    ref: "productcategory",
     required: true
     },
     brand: {
@@ -46,7 +49,7 @@ const productDataSchema = new Schema({
     },
     seller: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Seller',
+      ref: 'seller',
       required: true
     },
     highlights: {
@@ -67,6 +70,6 @@ const productDataSchema = new Schema({
   });
 
   const ProductDataModel: typeof Model<Product> =
-  mongoose.models.product || mongoose.model<Product>("product", productDataSchema);
+  mongoose.models.product || mongoose.model<Product>("product", ProductDataSchema);
 
 export default ProductDataModel;

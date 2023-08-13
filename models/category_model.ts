@@ -9,7 +9,7 @@ export interface ProductCategory extends Document {
   imageUrl: string | null;
 }
 
-const productCategorySchema = new mongoose.Schema<ProductCategory>({
+const ProductCategorySchema = new mongoose.Schema<ProductCategory>({
   name: {
     type: String,
     required: true,
@@ -39,6 +39,6 @@ const productCategorySchema = new mongoose.Schema<ProductCategory>({
 });
 
 const ProductCategoryModel: typeof Model<ProductCategory> =
-  mongoose.models.productcategory || mongoose.model<ProductCategory>("productcategory", productCategorySchema);
+  mongoose.models.productcategory || mongoose.model<ProductCategory>("productcategory", ProductCategorySchema);
 
 export default ProductCategoryModel;

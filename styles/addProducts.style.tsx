@@ -7,9 +7,10 @@ export const AddProductForm=styled.form`
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    background-color: white;
+    background-color: #F5FBFF;
     border-radius: 2px;
     max-width: 350px;
+    margin-bottom: 1rem;
     div{
         display: flex;
         justify-content: space-between;
@@ -71,6 +72,7 @@ export const AddProductForm=styled.form`
         border-radius: 2px;
         border: none;
         background-color: #FA651B;
+        cursor: pointer;
     }
     option{
         padding: 0.5rem;
@@ -88,6 +90,13 @@ export const AddProductForm=styled.form`
         font-size: 0.8em;
         font-weight: 400;
         color: red;
+        margin-bottom: 1rem;
+    }
+    h2{
+        font-family: 'Inter',sans-serif;
+        font-size: 1em;
+        font-weight: 600;
+        color: #2872F1;
         margin-bottom: 1rem;
     }
 `

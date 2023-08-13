@@ -2,11 +2,14 @@ import Image from "next/image"
 import img from '../../public/blinkart.png'
 import { useRouter } from "next/router"
 import { signOut, useSession } from "next-auth/react"
-import { HeaderContainer, ImageComponent } from "./Header.style"
+import { HeaderContainer, ImageComponent, MobileIcon } from "./Header.style"
 import { RouteHelper } from "@/services/RouteHelper"
+import { faBars } from "@fortawesome/free-solid-svg-icons"
 
-
-function PageHeader() {
+type headerPropType={
+  changeNavBarVisible: (value:boolean)=>void
+}
+function PageHeader(props:headerPropType) {
   const { data: session, status } = useSession()
 
   const router=useRouter()
@@ -24,6 +27,7 @@ function PageHeader() {
             <ImageComponent>
                 <Image src={img} alt='Blinkart logo' height='25' onClick={()=>router.push('/')} style={{cursor: 'pointer'}} placeholder = 'blur' />
             </ImageComponent>
+            <MobileIcon icon={faBars} onClick={()=>props.changeNavBarVisible(true)} />
         </HeaderContainer>
     )
 }

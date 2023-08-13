@@ -1,20 +1,22 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { MainPageLinkContainer, MenuLink, MenuLinkNav } from './MainPageLink.style'
 import UserNameSection from '../UserNameSection'
 import { useSession } from 'next-auth/react'
-import { faBagShopping, faBlog, faChartSimple, faCommentsDollar, faPowerOff, faSquarePlus, faStore } from '@fortawesome/free-solid-svg-icons'
+import { faBagShopping, faBlog, faChartSimple, faClose, faCommentsDollar, faPowerOff, faSquarePlus, faStore } from '@fortawesome/free-solid-svg-icons'
 import { User } from 'next-auth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { RouteHelper } from '@/services/RouteHelper'
 import { useRouter } from 'next/router'
 import '../../util/FontAwesomeConfig'
 import { signOut } from 'next-auth/react'
+import { MobileIcon } from '../Header/Header.style'
 
 export interface CustomUser extends User {
   id: string;
   role: string;
   seller:string;
 }
+
 
 function MainPageLinks() {
   const { data: session} = useSession()

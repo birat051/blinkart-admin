@@ -11,7 +11,7 @@ export interface SellerDataModel extends Document
 }
 
 
-const sellerSchema = new Schema<SellerDataModel>({
+const SellerSchema = new Schema<SellerDataModel>({
     name: {
       type: String,
       required: true
@@ -31,6 +31,6 @@ const sellerSchema = new Schema<SellerDataModel>({
 });
 
 const Seller: typeof Model<SellerDataModel> =
-mongoose.models.seller || mongoose.model<SellerDataModel>("seller", sellerSchema);
+mongoose.models.seller || mongoose.model<SellerDataModel>("seller", SellerSchema);
 
 export default Seller;

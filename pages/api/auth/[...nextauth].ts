@@ -19,7 +19,7 @@ interface User {
 const authOptions: NextAuthOptions = {
   callbacks: {
     session: ({ session, token }) => {
-      console.log('Token is: ',token)
+      // console.log('Token is: ',token)
       return {
         ...session,
         user: {

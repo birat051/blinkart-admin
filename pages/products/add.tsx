@@ -7,6 +7,7 @@ import { faCircle, faCircleMinus, faCirclePlus } from '@fortawesome/free-solid-s
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useSession } from 'next-auth/react'
+import Head from 'next/head'
 import React, { useState } from 'react'
 import { useController, useForm } from 'react-hook-form'
 import LoadingOverlayWrapper from 'react-loading-overlay-ts'
@@ -19,7 +20,7 @@ type addProductProp={
 }
 
 
-const ProductDetails=z.object({
+export const ProductDetails=z.object({
   brand: z.string().min(3),
   name: z.string().min(3),
   category: z.string(),
@@ -152,7 +153,11 @@ function AddProductPage(props:addProductProp) {
   return (
     <HomePageRightColumn>
       <LoadingOverlayWrapper>
+      <Head>
+        <title>Add a new product</title>
+      </Head>
       <AddProductForm onSubmit={handleSubmit(onFormSubmit)}>
+        <h2>Add a new Product</h2>
         <label>Brand</label>
         <input type="text" placeholder='Enter brand name' {...register('brand')}/>
         {errors.brand && <p>{errors.brand.message?.toString()}</p>}

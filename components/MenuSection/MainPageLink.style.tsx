@@ -9,7 +9,7 @@ export const MainPageLinkContainer=styled.div`
         list-style-type: none;
     }
     @media screen and (max-width:600px){
-        display:none;        
+        display: none;
     }
 `
 

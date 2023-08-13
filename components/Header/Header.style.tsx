@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
 export const HeaderContainer=styled.header`
@@ -64,4 +65,14 @@ export const UnorderedLink=styled.ul`
 export const DropDownLink= styled.li`
     position: relative;
     display: block;
+`
+
+export const MobileIcon=styled(FontAwesomeIcon)`
+    display: none;
+    color: white;
+    @media screen and (max-width:600px){
+        display: block;
+        width: 20px;
+        height: 20px;
+    }
 `

@@ -28,6 +28,7 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
             discount,
             seller
         }=req.body
+        const quantity=0
         const product:Product=await ProductDataModel.create({
             name,
             description,
@@ -37,7 +38,8 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
             imageUrls,
             seller,
             highlights,
-            discount
+            discount,
+            quantity
         })
         res.status(201).json(product)
     }
