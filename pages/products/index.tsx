@@ -29,6 +29,11 @@ function ProductsPage(props:productPropType) {
   const changeSelectedProduct=(productId:string)=>{
     setselectedProduct(productId)
   }
+  const changeProductList=(newProduct:Product)=>{
+    const newProductList=productList.filter((product)=>newProduct._id!==product._id)
+    newProductList.push(newProduct)
+    setproductList(newProductList)
+  }
   return (
     <HomePageRightColumn>
       <Head>
@@ -37,7 +42,7 @@ function ProductsPage(props:productPropType) {
       {productList.map((product:Product)=>{
         if(selectedProduct===product._id)
         return(
-        <EditProductForm product={product} category={product.category as ProductCategory} key={product._id}/>
+        <EditProductForm product={product} category={product.category as ProductCategory} key={product._id} changeProductList={changeProductList} changeSelectedProduct={changeSelectedProduct}/>
           )
         return (
           <ProductView key={product._id} product={product} changeSelectedProduct={changeSelectedProduct}/>

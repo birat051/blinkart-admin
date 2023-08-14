@@ -10,6 +10,7 @@ export const ProductContainer =styled.div`
     background-color: white;
     border: 0.1px solid grey;
     margin-bottom: 1rem;
+    position: relative;
 `
 
 export const ProductImage=styled.img`
@@ -143,4 +144,34 @@ export const EditIcon=styled(FontAwesomeIcon)`
    @media screen and (min-width:1000px){
         display: none;
     } 
+`
+
+export const ProductPopupOptions = styled.div`
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+    z-index: 2;
+    display: flex;
+    border-radius: 2px;
+    border: 0.2px solid grey;
+    flex-direction: column;
+    padding: 0.5rem;
+    padding-bottom: 0.25rem;
+    position: absolute;
+    right: 5%;
+    background-color: white;
+    /* transform: translateX(50%); */
+    top: 4%;
+    /* width: 80px; */
+    /* height: 50px; */
+    h2{
+        font-family: 'Inter',sans-serif;
+        font-weight: 400;
+        cursor: pointer;
+        font-size: 0.75em;
+        color: black;
+        margin-bottom: 0.75rem;
+        :hover{
+            color: #2872F1;
+            font-weight: 500;
+        }
+    }
 `

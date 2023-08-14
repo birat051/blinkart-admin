@@ -1,5 +1,5 @@
 import { Product } from "@/models/product_model"
-import { EditIcon, PriceView, ProductContainer, ProductImage, ProductOptionsIcon, ProductSpecification } from "./ProductView.style"
+import { EditIcon, PriceView, ProductContainer, ProductImage, ProductOptionsIcon, ProductPopupOptions, ProductSpecification } from "./ProductView.style"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { faEdit, faEllipsisVertical } from "@fortawesome/free-solid-svg-icons"
@@ -14,6 +14,7 @@ type productViewProp={
 
 function ProductView(props:productViewProp) {
   const [price,setPrice]=useState(props.product.price)
+  const [popupVisible, setpopupVisible] = useState(false)
   const router=useRouter()
   useEffect(() => {
     if(props.product.discount && props.product.discount>0)
@@ -36,7 +37,12 @@ function ProductView(props:productViewProp) {
         </p>}
       </PriceView>
       <EditIcon icon={faEdit} style={{flex:1,color:'rgb(41,116,241)',width:'12px',height:'12px',cursor:'pointer'}} onClick={()=>props.changeSelectedProduct(props.product._id)}/>
-      <ProductOptionsIcon icon={faEllipsisVertical} size='sm' style={{flex:1,color:'grey',width:'20px',height:'20px',cursor:'pointer'}}/>
+      <ProductOptionsIcon icon={faEllipsisVertical} size='sm' style={{flex:1,color:'grey',width:'20px',height:'20px',cursor:'pointer'}} onMouseOver={()=>setpopupVisible(true)}/>
+        {popupVisible && <ProductPopupOptions  onMouseLeave={()=>setpopupVisible(false)}>
+            <h2 onClick={()=>props.changeSelectedProduct(props.product._id)}>Edit</h2>
+            <h2 >Mark item out of stock</h2>
+            </ProductPopupOptions>
+        }
     </ProductContainer>
   )
 }

@@ -11,6 +11,7 @@ export const AddProductForm=styled.form`
     border-radius: 2px;
     max-width: 350px;
     margin-bottom: 1rem;
+    position: relative;
     div{
         display: flex;
         justify-content: space-between;
@@ -97,6 +98,13 @@ export const AddProductForm=styled.form`
         font-size: 1em;
         font-weight: 600;
         color: #2872F1;
+        margin-bottom: 1rem;
+    }
+    h3{
+        font-family: 'Inter',sans-serif;
+        font-size: 0.8em;
+        font-weight: 600;
+        color: grey;
         margin-bottom: 1rem;
     }
 `
