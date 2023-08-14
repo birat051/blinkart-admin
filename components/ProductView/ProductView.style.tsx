@@ -55,6 +55,17 @@ export const ProductSpecification = styled.div`
         font-weight: 400;
         margin-bottom: 0.5rem;
     }
+    ul{
+        display: block;
+        list-style-position: inside;
+    }
+    li{
+        color: black;
+        font-size: 0.8em;
+        font-family: 'Noto Sans',sans-serif;
+        font-weight: 400;
+        margin-bottom: 0.5rem; 
+    }
     p span{
       color  : grey;
       margin-right: 10px;

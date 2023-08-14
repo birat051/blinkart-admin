@@ -9,7 +9,6 @@ import React, { useState } from 'react'
 import { useController, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { CustomUser } from '../MenuSection'
-import { MobileIcon } from '../Header/Header.style'
 
 
 type editProductProp={

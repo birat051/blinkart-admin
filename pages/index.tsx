@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import {HomePageRightColumn } from '@/styles/global.style'
+import { useSession } from 'next-auth/react'
 
 export default function Home() {
-
+  const {data:session}=useSession()
   return (
     <>
       <Head>
@@ -12,6 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <HomePageRightColumn>
+          
         </HomePageRightColumn>
     </>
   )

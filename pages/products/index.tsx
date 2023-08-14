@@ -45,7 +45,7 @@ function ProductsPage(props:productPropType) {
         <EditProductForm product={product} category={product.category as ProductCategory} key={product._id} changeProductList={changeProductList} changeSelectedProduct={changeSelectedProduct}/>
           )
         return (
-          <ProductView key={product._id} product={product} changeSelectedProduct={changeSelectedProduct}/>
+          <ProductView key={product._id} product={product} changeSelectedProduct={changeSelectedProduct} changeProductList={changeProductList}/>
         )
       })}
     </HomePageRightColumn>

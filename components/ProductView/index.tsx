@@ -3,12 +3,12 @@ import { EditIcon, PriceView, ProductContainer, ProductImage, ProductOptionsIcon
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { faEdit, faEllipsisVertical } from "@fortawesome/free-solid-svg-icons"
-import { MobileIcon } from "../Header/Header.style"
 
 
 type productViewProp={
   product: Product,
   changeSelectedProduct: (productId:string)=>void
+  changeProductList:(product:Product)=>void
 }
 
 
@@ -21,14 +21,33 @@ function ProductView(props:productViewProp) {
     setPrice(Math.floor(props.product.price * (100 - props.product.discount) / 100));
   }, [props.product.discount])
   // console.log('Discount is: ',props.product.discount)
+  const markOutofStock=async (productId:string)=>{
+    const response = await fetch(`/api/product/updatequantity?productId=${productId}&quantity=${0}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+      });
+    const data=await response.json()
+    if(response.status===200)
+    {
+      alert('Product has been marked out of stock')
+      props.changeProductList(data)
+    }
+    else{
+      alert(data.error)
+    }
+  }
   return (
     <ProductContainer>
       <ProductImage src={props.product.imageUrls[0]} alt={`Image for product ${props.product.name}`}/>
       <ProductSpecification>
         <h1>{props.product.name}</h1>
+        <ul>
         {props.product.highlights.map((highlight)=>{
-          return <p key={props.product._id+highlight}><span>•</span>{highlight}</p>
+          return <li key={props.product._id+highlight}>{highlight}</li>
         })}
+        </ul>
       </ProductSpecification>
       <PriceView>
         <h2>₹ {price}</h2>
@@ -40,7 +59,7 @@ function ProductView(props:productViewProp) {
       <ProductOptionsIcon icon={faEllipsisVertical} size='sm' style={{flex:1,color:'grey',width:'20px',height:'20px',cursor:'pointer'}} onMouseOver={()=>setpopupVisible(true)}/>
         {popupVisible && <ProductPopupOptions  onMouseLeave={()=>setpopupVisible(false)}>
             <h2 onClick={()=>props.changeSelectedProduct(props.product._id)}>Edit</h2>
-            <h2 >Mark item out of stock</h2>
+            <h2 onClick={()=>markOutofStock(props.product._id)}>Mark item out of stock</h2>
             </ProductPopupOptions>
         }
     </ProductContainer>
