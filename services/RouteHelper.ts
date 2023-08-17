@@ -18,6 +18,9 @@ export class RouteHelper
     static getAllSellersRoute=()=>{
         return '/sellers'
     }
+    static getAddSellersRoute=()=>{
+        return '/sellers/add'
+    }
     static getAllOffersRoute=()=>{
         return '/offers'
     }

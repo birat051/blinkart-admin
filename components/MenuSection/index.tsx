@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { MainPageLinkContainer, MenuLink, MenuLinkNav } from './MainPageLink.style'
 import UserNameSection from '../UserNameSection'
 import { useSession } from 'next-auth/react'
-import { faBagShopping, faBlog, faChartSimple, faClose, faCommentsDollar, faPowerOff, faSquarePlus, faStore } from '@fortawesome/free-solid-svg-icons'
+import { faBagShopping, faBlog, faChartSimple, faClose, faCommentsDollar, faPowerOff, faSquarePlus, faStore, faUserCheck, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { User } from 'next-auth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { RouteHelper } from '@/services/RouteHelper'
@@ -75,6 +75,16 @@ function MainPageLinks() {
       icon: faSquarePlus,
       link: RouteHelper.getAddCategoryRoute()
     },
+    {
+      label: "Sellers",
+      icon: faUserCheck,
+      link: RouteHelper.getAllSellersRoute()
+    },
+    {
+      label: "Add Sellers",
+      icon: faUserPlus,
+      link: RouteHelper.getAddSellersRoute()
+    },
   ]
   const signOutHandler=async ()=>{
     await signOut()
@@ -95,7 +105,7 @@ function MainPageLinks() {
               return (
                 <MenuLink key={link.label} className={router.pathname===link.link?'active':''}>
                   <FontAwesomeIcon icon={link.icon}   style={{flex:1,width:'20px',height:'20px'}}/>
-                  <MenuLinkNav href={router.pathname===link.link?link.link:'#'}>{link.label}</MenuLinkNav>
+                  <MenuLinkNav href={router.pathname!==link.link?link.link:'#'}>{link.label}</MenuLinkNav>
                 </MenuLink>
               )
           })}
