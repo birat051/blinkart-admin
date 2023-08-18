@@ -100,7 +100,7 @@ export default function Home(props:homePropType) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <HomePageRightColumn>
-          <HomeHeading>
+          <HomeHeading className={(session?.user as CustomUser).role==='seller'?'':'admin'}>
             <HomeHeadingElement backgroundcolor='#7A3AED'>
               <h2>Total Sales Amount</h2>
               <h1>₹ {Math.floor(props.totalRevenue)}</h1>
@@ -244,8 +244,8 @@ export async function getServerSideProps(context:GetServerSidePropsContext)
       value: canceledOrders,
       label: 'Canceled'
     })
-    console.log('Monthly revenue list is: ',monthlyRevenueList)
-    console.log('Order status list is: ',orderStatusList)
+    // console.log('Monthly revenue list is: ',monthlyRevenueList)
+    // console.log('Order status list is: ',orderStatusList)
       return {
         props:{
           orders: JSON.parse(JSON.stringify(sellerOrders)),
@@ -301,7 +301,7 @@ export async function getServerSideProps(context:GetServerSidePropsContext)
             totalRevenue: totalRevenueForMonth
           });
         }
-        console.log('Monthly revenue list is: ',monthlyRevenueList)
+        // console.log('Monthly revenue list is: ',monthlyRevenueList)
         
         // Count the occurrences of each order status
         sellerOrders.forEach(order => {

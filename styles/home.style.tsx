@@ -6,15 +6,20 @@ type headingElementType={
 }
 
 
-export const HomeHeading=styled.div`
+export const HomeHeading=styled.div.attrs((props) => ({
+    className: props.className, 
+  }))`
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(3,1fr);
     column-gap: 1rem;
     margin-bottom: 1rem;
     @media screen and (max-width:600px){
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+    }
+    &.admin{
+        grid-template-columns: repeat(4,1fr);  
     }
 `
 

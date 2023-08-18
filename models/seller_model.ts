@@ -7,7 +7,8 @@ export interface SellerDataModel extends Document
     name: string,
     address: string,
     contactNumber: string,
-    createdAt: Date
+    createdAt: Date,
+    _id: string
 }
 
 

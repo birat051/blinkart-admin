@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 const { Schema,Model } = mongoose;
 
+const seller=require('./seller_model')
+
 export interface UserModel extends Document {
     email: string;
     password: string;
@@ -15,7 +17,7 @@ const userSchema= new Schema({
     password: {type: String},
     name: {type: String},
     role: {type:String},
-    seller: { type: mongoose.Schema.Types.ObjectId, ref: 'Seller',default: null },
+    seller: { type: mongoose.Schema.Types.ObjectId, ref: 'seller',default: null },
 })
 
 const UserDataModel: typeof Model<UserModel> =

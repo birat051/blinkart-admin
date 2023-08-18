@@ -2,6 +2,7 @@ import { MongoClient } from 'mongodb';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import jwt from 'jsonwebtoken'; 
+import HashPassword from '@/util/HashPassword';
 
 const mongoUri = process.env.DB_LINK || '';
 
@@ -66,19 +67,12 @@ const authOptions: NextAuthOptions = {
           const user = await collection.findOne({ email });
           
           if (user) {
-            if (user.password === password) {
-              const tokenPayload = {
-                sub: user.id,
-                role: user.role,
-                email: user.email,
-                name: user.name
-              };
-          
-              // Generate token using your preferred JWT library
-              // const secretKey = process.env.NEXTAUTH_SECRET;
-              // const token = jwt.sign(tokenPayload, secretKey??'');
+            const userPass=await HashPassword.isSamePassword(password,user.password)
+            if(userPass)
+            {
               return { ...user, id: user._id.toString(),role:user.role,seller:user.seller??'' };
-            } else {
+            }
+            else{
               throw new Error('Incorrect password');
             }
           } else {
