@@ -15,6 +15,7 @@ export const AddProductForm=styled.form`
     div{
         display: flex;
         justify-content: space-between;
+        align-items: baseline;
         p{
             flex: 2;
             color: black;
@@ -22,6 +23,13 @@ export const AddProductForm=styled.form`
             span{
             margin-right: 0.5rem;
             }
+        }
+        button{
+            background-color: white;
+            color: #2872F1;
+            border: 1px solid #2872F1;
+            margin-bottom: 1rem;
+            padding: 0.25rem 1rem 0.25rem 1rem;
         }
     }
     input{
@@ -35,6 +43,9 @@ export const AddProductForm=styled.form`
         margin-bottom: 1rem;
         background-color: white;
         flex: 2;
+    }
+    input:disabled{
+        background-color: #EBEBE4;
     }
     textarea{
         border: 0.1px solid grey;

@@ -41,7 +41,7 @@ function EditSellerForm(props:editSellerProp) {
         const responseData=await response.json()
         if(response.status===200)
         {
-          alert('Seller account has been successfully created')
+          alert('Seller account has been successfully updated')
           props.updateSellerDetails(responseData)
           props.closeSellerForm('')
           // reset()
