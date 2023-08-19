@@ -260,7 +260,8 @@ export async function getStaticProps()
     props:{
     parentCategories:JSON.parse(JSON.stringify(parentCategories)),
     subcategories: subcategoryMap,
-    }
+    },
+    revalidate: 600
   }
   }
   catch(error)

@@ -45,7 +45,7 @@ type homePropType={
 
 export default function Home(props:homePropType) {
   const {data:session}=useSession()
-  if(props.error)
+  if(props.error || !session)
   {
     return (
       <ErrorContainer>

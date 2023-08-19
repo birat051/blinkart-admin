@@ -15,7 +15,6 @@ type productViewProp={
 function ProductView(props:productViewProp) {
   const [price,setPrice]=useState(props.product.price)
   const [popupVisible, setpopupVisible] = useState(false)
-  const router=useRouter()
   useEffect(() => {
     if(props.product.discount && props.product.discount>0)
     setPrice(Math.floor(props.product.price * (100 - props.product.discount) / 100));
