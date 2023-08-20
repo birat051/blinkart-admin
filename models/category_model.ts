@@ -3,7 +3,7 @@ import mongoose, { Document, Model } from "mongoose";
 export interface ProductCategory extends Document {
   name: string;
   description: string;
-  parentCategory: mongoose.Schema.Types.ObjectId | null;
+  parentCategory: mongoose.Schema.Types.ObjectId | null | ProductCategory;
   createdAt: Date;
   updatedAt: Date;
   imageUrl: string | null;
