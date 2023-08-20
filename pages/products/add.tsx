@@ -147,7 +147,7 @@ function AddProductPage(props:addProductProp) {
     alert(responseData.error);
   }
   catch(error){
-      alert('Unexpected error occured while trying to add address')
+      alert('Unexpected error occured while trying to add product')
   }
   }
   return (
