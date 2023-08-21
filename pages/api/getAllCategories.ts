@@ -8,26 +8,14 @@ export default async function handler(req:NextApiRequest,res:NextApiResponse){
     if (!token) {
         return res.status(401).json({ error: 'Unauthorized' });
     }
-    if(req.method!=='POST')
+    if(req.method!=='GET')
     {
         return res.status(405).json({ error: 'Method not allowed' });
-        
     }
     try{
         await connectToDatabase()
-        const{
-            name,
-            description,
-            parentCategory,
-            imageUrl
-        }=req.body
-        const category:ProductCategory=await ProductCategoryModel.create({
-            name,
-            description,
-            parentCategory,
-            imageUrl
-        })
-        res.status(201).json(category)
+        const categories:ProductCategory[] = await ProductCategoryModel.find()
+        res.status(200).json(categories)
     }
     catch(error)
     {

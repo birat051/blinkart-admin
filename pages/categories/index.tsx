@@ -5,6 +5,7 @@ import connectToDatabase from '@/util/connectDB'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import CategoryViewComponent from '@/components/CategoryView'
+import EditCategoryForm from '@/components/EditCategoryForm'
 
 type categoryProp={
   categories: ProductCategory[],
@@ -29,27 +30,51 @@ function CategoryPage(props:categoryProp) {
   const handleCategoryChange=(event:React.ChangeEvent<HTMLSelectElement>)=>{
     setcategoryFilterValue(event.target.value)
   }
+  const getAllCategories=async ()=>{
+    try{
+      const response = await fetch(`/api/getAllCategories`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        });
+    const responseData=await response.json()
+    if(response.status===200)
+    {
+      setcategoryList(responseData)
+    }
+  }
+  catch(error){
+    console.log('Unexpected error occured while trying to fetch category: ',error)
+  }
+  }
   useEffect(() => {
-    // const setParentCategoryList=()=>{
-    //   const newCategoryList=categoryList.filter((category)=>category.parentCategory===null)
-    //   setcategoryList(newCategoryList)
-    // }
     if(showParentCategories)
     setcategoryList(parentCategoryList)
     else
     {
-      setcategoryList(props.categories)
+      getAllCategories()
     }
   }, [showParentCategories])
   useEffect(() => {
     if(categoryFilterValue.length===0)
     {
-      setcategoryList(props.categories)
+      getAllCategories()
       return
     }
     const newCategoryList=props.categories.filter((category)=>(category.parentCategory && (category.parentCategory as ProductCategory)._id===categoryFilterValue))
     setcategoryList(newCategoryList)
   }, [categoryFilterValue])
+  const updateCategoryList=(category:ProductCategory)=>{
+    const newList=categoryList.filter((data)=>data._id!==category._id)
+    newList.push(category)
+    setcategoryList(newList)
+    if(category.parentCategory===null)
+    {
+      const parentList=parentCategoryList.filter((data)=>data._id!==category._id)
+      setparentCategoryList([...parentList,category])
+    }
+  }
   return (
     <HomePageRightColumn>
       <Head>
@@ -76,6 +101,10 @@ function CategoryPage(props:categoryProp) {
         </div>
       </CategoryFilterContainer>
       {categoryList.map((category)=>{
+        if(selectedCategory===category._id)
+        return (
+          <EditCategoryForm key={category._id} categorydata={category} parentCategories={parentCategoryList} closeEditForm={changeSelectedCategory} updateCategoryList={updateCategoryList}/>
+          )
         return (
           <CategoryViewComponent key={category._id} category={category} changeSelectedCategory={changeSelectedCategory}/>
           )
