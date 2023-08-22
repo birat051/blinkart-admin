@@ -15,7 +15,8 @@ export const AddProductForm=styled.form`
     div{
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
+        align-items: center;
+        margin-bottom: 1rem;
         p{
             flex: 2;
             color: black;
@@ -30,6 +31,9 @@ export const AddProductForm=styled.form`
             border: 1px solid #2872F1;
             margin-bottom: 1rem;
             padding: 0.25rem 1rem 0.25rem 1rem;
+        }
+        input{
+            margin-bottom: 0rem;
         }
     }
     input{

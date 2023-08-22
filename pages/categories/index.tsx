@@ -89,7 +89,7 @@ function CategoryPage(props:categoryProp) {
           <input type="checkbox" checked={showParentCategories} onChange={()=>setShowParentCategories(!showParentCategories)} disabled={categoryFilterValue===''?false:true}/>
         </div>
         <div>
-          <label>Show categories for Parent Category</label>
+          <label>Show sub-categories for Parent Category</label>
           <select onChange={handleCategoryChange} value={categoryFilterValue} disabled={showParentCategories}>
             <option value="">Category</option>
           {parentCategoryList.map((category) => (
