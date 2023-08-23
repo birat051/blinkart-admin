@@ -25,7 +25,7 @@ const bannerSchema = new Schema({
   isActive: {
     type: Boolean,
     default: true
-  }
+  },
 });
 
 export interface Banner extends Document {
@@ -34,6 +34,8 @@ export interface Banner extends Document {
   link: string;
   createdAt: Date;
   updatedAt: Date;
+  _id: string;
+  isActive: boolean
 }
 
 

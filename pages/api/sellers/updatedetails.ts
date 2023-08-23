@@ -1,5 +1,3 @@
-import { CustomUser } from "@/components/MenuSection";
-import ProductDataModel, { Product } from "@/models/product_model";
 import Seller, { SellerDataModel } from "@/models/seller_model";
 import connectToDatabase from "@/util/connectDB";
 import { NextApiRequest, NextApiResponse } from "next";
