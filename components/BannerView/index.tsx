@@ -9,7 +9,9 @@ import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 type BannerViewProp={
     banner: Banner,
     bannerDetailMap: BannerMap,
-    deleteBanner: (bannerId:string)=>void
+    deleteBanner: (bannerId:string)=>void,
+    markBannerInactive: (bannerId:string)=>void,
+    markBannerActive: (bannerId:string)=>void
 }
 
 function BannerViewComponent(props:BannerViewProp) {
@@ -27,8 +29,8 @@ function BannerViewComponent(props:BannerViewProp) {
     </div>
     <ProductOptionsIcon icon={faEllipsisVertical} size='sm' style={{flex:1,color:'grey',width:'20px',height:'20px',cursor:'pointer'}} onMouseOver={()=>setpopupVisible(true)}/>
             {popupVisible && <ProductPopupOptions  onMouseLeave={()=>setpopupVisible(false)}>
-            {props.banner.isActive && <h2>Mark as inactive</h2>}
-            {!props.banner.isActive && <h2>Mark as active</h2>}
+            {props.banner.isActive && <h2 onClick={()=>props.markBannerInactive(props.banner._id)}>Mark as inactive</h2>}
+            {!props.banner.isActive && <h2 onClick={()=>props.markBannerActive(props.banner._id)}>Mark as active</h2>}
             <h2 onClick={()=>props.deleteBanner(props.banner._id)}>Delete</h2>
             </ProductPopupOptions>
     }

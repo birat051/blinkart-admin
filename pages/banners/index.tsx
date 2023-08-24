@@ -6,7 +6,6 @@ import { ErrorContainer, HomePageRightColumn } from '@/styles/global.style'
 import connectToDatabase from '@/util/connectDB'
 import Head from 'next/head'
 import React, { useState } from 'react'
-import Image from 'next/image'
 import BannerViewComponent from '@/components/BannerView'
 
 
@@ -66,6 +65,50 @@ function BannerPage(props:bannerProp) {
       alert('Unexpected error occured while trying to delete banner')
   }
   }
+  const markBannerActive=async (bannerId:string)=>{
+    try{
+      const response = await fetch(`/api/banner/markactive?bannerId=${bannerId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        });
+    const responseData=await response.json()
+    if(response.status===200)
+    {
+      alert('Banner has been marked as active')
+      const newBannerList=bannerList.filter((banner)=>banner._id!==bannerId)
+      setbannerList([...newBannerList,responseData])
+    }
+    else
+    alert(responseData.error);
+  }
+  catch(error){
+    alert('Unexpected error occured while trying to mark banner inactive')
+  }
+  }
+  const markBannerInactive=async (bannerId:string)=>{
+    try{
+      const response = await fetch(`/api/banner/markinactive?bannerId=${bannerId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        });
+    const responseData=await response.json()
+    if(response.status===200)
+    {
+      alert('Banner has been marked as inactive')
+      const newBannerList=bannerList.filter((banner)=>banner._id!==bannerId)
+      setbannerList([...newBannerList,responseData])
+    }
+    else
+    alert(responseData.error);
+  }
+  catch(error){
+      alert('Unexpected error occured while trying to mark banner inactive')
+  }
+  }
   return (
     <HomePageRightColumn>
       <Head>
@@ -73,7 +116,7 @@ function BannerPage(props:bannerProp) {
       </Head>
       {bannerList.map((banner)=>{
         return (
-          <BannerViewComponent key={banner._id} banner={banner} bannerDetailMap={props.bannerDetailMap} deleteBanner={deleteBanner}/>
+          <BannerViewComponent key={banner._id} banner={banner} bannerDetailMap={props.bannerDetailMap} deleteBanner={deleteBanner} markBannerActive={markBannerActive} markBannerInactive={markBannerInactive}/>
         )
       })}
     </HomePageRightColumn>
