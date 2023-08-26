@@ -12,6 +12,16 @@ export const AddProductForm=styled.form`
     max-width: 350px;
     margin-bottom: 1rem;
     position: relative;
+    input[type=checkbox]{
+        width: 14px;
+        height: 14px;
+        padding: 0rem;
+        text-align: left;
+        display: flex;
+        justify-content: flex-start;
+        text-align: right;
+        accent-color: #2A73F1;
+    }
     div{
         display: flex;
         justify-content: space-between;
@@ -33,6 +43,8 @@ export const AddProductForm=styled.form`
             padding: 0.25rem 1rem 0.25rem 1rem;
         }
         input{
+            margin-bottom: 0rem;        }
+        label{
             margin-bottom: 0rem;
         }
     }
@@ -122,4 +134,5 @@ export const AddProductForm=styled.form`
         color: grey;
         margin-bottom: 1rem;
     }
+
 `

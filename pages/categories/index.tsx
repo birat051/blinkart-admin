@@ -1,5 +1,5 @@
 import ProductCategoryModel, { ProductCategory } from '@/models/category_model'
-import { CategoryFilterContainer, CategoryView } from '@/styles/categories.style'
+import { CategoryFilterContainer } from '@/styles/categories.style'
 import { ErrorContainer, HomePageRightColumn } from '@/styles/global.style'
 import connectToDatabase from '@/util/connectDB'
 import Head from 'next/head'

@@ -1,7 +1,6 @@
 import BannerModel, { Banner } from '@/models/banner_model'
 import ProductCategoryModel from '@/models/category_model'
 import ProductDataModel from '@/models/product_model'
-import { BannerView } from '@/styles/banners.style'
 import { ErrorContainer, HomePageRightColumn } from '@/styles/global.style'
 import connectToDatabase from '@/util/connectDB'
 import Head from 'next/head'

@@ -5,9 +5,17 @@ const nextConfig = {
     // Enables the styled-components SWC transform
     styledComponents: true
   },
+  // images: {
+  //   domains: ['storage.googleapis.com','rukminim2.flixcart.com','t4.ftcdn.net','rukminim1.flixcart.com'],
+  //   minimumCacheTTL: 1500000,
+  // },
   images: {
-    domains: ['storage.googleapis.com','rukminim2.flixcart.com','t4.ftcdn.net','rukminim1.flixcart.com'],
-    minimumCacheTTL: 1500000,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
 }
 
