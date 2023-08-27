@@ -11,13 +11,13 @@ import { useController, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import Image from 'next/image'
 
-interface CategoryList
+export interface CategoryList
 {
     categories:ProductCategory[]
     id:string
 }
 
-interface SubCategoryMap
+export interface SubCategoryMap
 {
     [id: string]:ProductCategory[]
 }
@@ -28,13 +28,13 @@ type OfferProp={
     error?: string
 }
 
-enum SelectedParam {
+export enum SelectedParam {
     Empty = "",
     Price = "price",
     Discount = "discount"
   }
 
-  interface OfferFormData {
+export  interface OfferFormData {
     title: string;
     category: string;
     subcategory: string;
@@ -46,7 +46,7 @@ enum SelectedParam {
     discount: string;
   }
 
-const OfferDetails=z.object({
+export const OfferDetails=z.object({
     title: z.string().min(3),
     category: z.string(),
     subcategory: z.string(),

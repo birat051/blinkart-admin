@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { ProductCategory } from "./category_model";
 const { Schema,Model } = mongoose;
 
 const productcategory=require('./category_model')
@@ -49,8 +50,8 @@ export interface Offer extends Document {
   title: string;
   description: string;
   price: number;
-  category: string;
-  parentCategory: string | null;
+  category: string | ProductCategory;
+  parentCategory: string | null | ProductCategory;
   expiryDate: Date;
   isTopOffer: boolean;
   discount: number;
