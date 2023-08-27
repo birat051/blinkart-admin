@@ -34,7 +34,7 @@ export enum SelectedParam {
     Discount = "discount"
   }
 
-export  interface OfferFormData {
+export interface OfferFormData {
     title: string;
     category: string;
     subcategory: string;

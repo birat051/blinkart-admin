@@ -2,21 +2,23 @@ import { ProductCategory } from '@/models/category_model'
 import { Offer } from '@/models/offer_model'
 import { OfferDetails, OfferFormData, SelectedParam, SubCategoryMap } from '@/pages/offers/add'
 import { AddProductForm } from '@/styles/addProducts.style'
-import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlus, faClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { zodResolver } from '@hookform/resolvers/zod'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useController, useForm } from 'react-hook-form'
 import Image from 'next/image'
 
 type EditOfferProp={
     offer: Offer,
     subCategoryMap: SubCategoryMap,
-    parentCategories: ProductCategory[]
+    parentCategories: ProductCategory[],
+    closeEditForm: (offerId:string)=>void,
+    updateOfferList: (newOffer: Offer)=>void
 }
 
 function EditOfferForm(props:EditOfferProp) {
-    const [param, setparam] = useState<string>('')
+    const [param, setparam] = useState<string>(props.offer.discount>0?SelectedParam.Discount:SelectedParam.Price)
     const [selectedCategory, setselectedCategory] = useState('')
     let resolverConfig;
     if (param === SelectedParam.Discount) {
@@ -51,7 +53,7 @@ function EditOfferForm(props:EditOfferProp) {
       const { field: topOfferField } = useController({
         name: 'istopoffer',
         control,
-        defaultValue: props.offer.isTopOffer
+        defaultValue: props.offer.isTopOffer,
       });
     const {errors}=formState
     const [image, setimageUrl] = useState('')
@@ -75,9 +77,63 @@ function EditOfferForm(props:EditOfferProp) {
     const changeImageUrl=(event:React.ChangeEvent<HTMLInputElement>)=>{
         setimageUrl(event.target.value)
     }
+    const [defaultExpiryDate, setdefaultExpiryDate] = useState('')
+    useEffect(() => {
+      const expiryDate=new Date(props.offer.expiryDate)
+      const year = expiryDate.getFullYear();
+      const month = String(expiryDate.getMonth() + 1).padStart(2, '0');
+      const day = String(expiryDate.getDate()).padStart(2, '0');
+      setdefaultExpiryDate(`${year}-${month}-${day}`)
+    }, [])
+    const editOffer=async (value:Record<string,any>)=>{
+      // console.log('Subcategory field is: ',subCategoryField.value)
+      const data=(subCategoryField.value && subCategoryField.value.length>0)?{
+          title:value.title,
+          description:value.description,
+          price:value.price??0,
+          category:subCategoryField.value,
+          parentCategory:categoryField.value,
+          expiryDate:value.expirydate,
+          isTopOffer:topOfferField.value,
+          discount:value.discount??0,
+          categoryImageUrl:value.imageurl,
+      }:{
+          title:value.title,
+          description:value.description,
+          price:value.price??0,
+          category:categoryField.value,
+          parentCategory:null,
+          expiryDate:value.expirydate,
+          isTopOffer:topOfferField.value,
+          discount:value.discount??0,
+          categoryImageUrl:value.imageurl,
+      }
+      try{
+          const response = await fetch(`/api/offers/update?offerId=${props.offer._id}`, {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            });
+        const responseData=await response.json()
+        if(response.status===200)
+        {
+          alert('Offer has been successfully updated')
+          props.updateOfferList(responseData)
+          props.closeEditForm('')
+        }
+        else
+        alert(responseData.error);
+      }
+      catch(error){
+          alert('Unexpected error occured while trying to update offer')
+      }
+  }
   return (
-    <AddProductForm>
+    <AddProductForm onSubmit={handleSubmit(editOffer)}>
         <h2>Edit offer {props.offer.title}</h2>
+        <FontAwesomeIcon icon={faClose} style={{width:'15px',height:'15px',color:'grey',position:'absolute',right:'16',top:'16',cursor:'pointer'}} onClick={()=>props.closeEditForm('')}/>
         <label>Title</label>
         <input type="text" placeholder='Enter offer title' {...register('title')} defaultValue={props.offer.title}/>
         {errors.title && <p>{errors.title.message?.toString()}</p>}
@@ -119,17 +175,17 @@ function EditOfferForm(props:EditOfferProp) {
         <option value={SelectedParam.Price}>Price</option>
         </select>
         {param===SelectedParam.Discount && <label>Enter minimum discount</label>}
-        {param===SelectedParam.Discount && <input type="number" placeholder='Enter discount' {...register('discount')}/>}
+        {param===SelectedParam.Discount && <input type="number" placeholder='Enter discount' {...register('discount')}  defaultValue={props.offer.discount}/>}
         {errors.discount && <p>{errors.discount.message?.toString()}</p>}
         {param===SelectedParam.Price && <label>Enter starting price</label>}
-        {param===SelectedParam.Price && <input type="number" placeholder='Enter price' {...register('price')}/>}
+        {param===SelectedParam.Price && <input type="number" placeholder='Enter price' {...register('price')} defaultValue={props.offer.price}/>}
         {errors.price && <p>{errors.price.message?.toString()}</p>}
         <label>Expiry Date</label>
-        <input type="date" placeholder='Enter expiry date' {...register('expirydate')} defaultValue={props.offer.expiryDate.toString()}/>
+        <input type="date" placeholder='Enter expiry date' {...register('expirydate')} defaultValue={defaultExpiryDate}/>
         {errors.expirydate && <p>{errors.expirydate.message?.toString()}</p>}
         <div>
         <label>Include as top offer</label>
-        <input type="checkbox" onChange={handleOfferChange}/>
+        <input type="checkbox" onChange={handleOfferChange} defaultChecked={topOfferField.value}/>
         </div>
         {errors.istopoffer && <p>{errors.istopoffer.message?.toString()}</p>}
         <button type="submit">SAVE</button>

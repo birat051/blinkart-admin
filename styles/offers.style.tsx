@@ -52,7 +52,7 @@ export const OfferListView=styled.div`
     flex: 4;
     background-color: rgb(240,242,246);
     padding: 1rem;
-    @media screen and (max-width: 1000px){
+    @media screen and (max-width: 1200px){
         display: flex;
         flex-direction: column;
         justify-content: flex-start;

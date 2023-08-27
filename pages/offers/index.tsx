@@ -53,6 +53,10 @@ function OfferPage(props:OfferProp) {
     const changeSelectedOffer=(offerId:string)=>{
         setselectedOffer(offerId)
     }
+    const updateOfferList=(newOffer:Offer)=>{
+        const newOfferList=offerList.filter((offer)=>offer._id!==newOffer._id)
+        setofferList([...newOfferList,newOffer])
+    }
   return (
     <OfferListView>
         <Head>
@@ -61,7 +65,7 @@ function OfferPage(props:OfferProp) {
         {offerList.map((offer)=>{
             if(offer._id===selectedOffer)
             return (
-            <EditOfferForm subCategoryMap={props.subCategoryMap} offer={offer} parentCategories={props.parentCategories} key={offer._id}/>
+            <EditOfferForm subCategoryMap={props.subCategoryMap} offer={offer} parentCategories={props.parentCategories} key={offer._id} closeEditForm={changeSelectedOffer} updateOfferList={updateOfferList}/>
             )
             return (
                 <OfferView key={offer._id} offer={offer} deleteOffer={deleteOffer} editOffer={changeSelectedOffer}/>

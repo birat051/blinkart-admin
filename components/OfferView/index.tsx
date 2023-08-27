@@ -28,6 +28,8 @@ function OfferView(props:OfferViewProp) {
                         </p>
                         <p><span>Expiry Date</span> {expiryDate.toDateString()}</p>
                         <p><span>Is top offer?</span> {props.offer.isTopOffer?'Yes':'No'}</p>
+                        {props.offer.price>0 && <p><span>Starting Price&nbsp;</span>₹ {props.offer.price}</p>}
+                        {props.offer.discount>0 && <p><span>Minimum discount&nbsp;</span>{props.offer.discount}% off</p>}
                     </div>
                     <ProductOptionsIcon icon={faEllipsisVertical} size='sm' style={{flex:1,color:'grey',width:'20px',height:'20px',cursor:'pointer'}} onMouseOver={()=>setpopupVisible(true)}/>
             {popupVisible && <ProductPopupOptions  onMouseLeave={()=>setpopupVisible(false)}>
