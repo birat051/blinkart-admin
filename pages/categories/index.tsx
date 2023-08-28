@@ -13,12 +13,6 @@ type categoryProp={
 }
 
 function CategoryPage(props:categoryProp) {
-  if(props.error)
-  return (
-    <ErrorContainer>
-      <p>Unexpected error ocurred: {props.error}</p>
-    </ErrorContainer>
-    )
   const [selectedCategory, setselectedCategory] = useState('')
   const changeSelectedCategory=(categoryId:string)=>{
     setselectedCategory(categoryId)
@@ -75,6 +69,12 @@ function CategoryPage(props:categoryProp) {
       setparentCategoryList([...parentList,category])
     }
   }
+  if(props.error)
+  return (
+    <ErrorContainer>
+      <p>Unexpected error ocurred: {props.error}</p>
+    </ErrorContainer>
+    )
   return (
     <HomePageRightColumn>
       <Head>

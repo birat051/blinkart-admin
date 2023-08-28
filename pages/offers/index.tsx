@@ -18,14 +18,6 @@ type OfferProp={
 }   
 
 function OfferPage(props:OfferProp) {
-    if(props.error)
-    {
-      return (
-        <ErrorContainer>
-          <p>{props.error}</p>
-        </ErrorContainer>
-      )
-    }
     const [offerList, setofferList] = useState(props.offerList)
     const [selectedOffer, setselectedOffer] = useState('')
     const deleteOffer=async (offerId:string)=>{
@@ -56,6 +48,14 @@ function OfferPage(props:OfferProp) {
     const updateOfferList=(newOffer:Offer)=>{
         const newOfferList=offerList.filter((offer)=>offer._id!==newOffer._id)
         setofferList([...newOfferList,newOffer])
+    }
+    if(props.error)
+    {
+      return (
+        <ErrorContainer>
+          <p>{props.error}</p>
+        </ErrorContainer>
+      )
     }
   return (
     <OfferListView>

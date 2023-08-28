@@ -67,14 +67,6 @@ export const OfferDetails=z.object({
 
 
 function AddOffersPage(props:OfferProp) {
-    if(props.error)
-    {
-      return (
-        <ErrorContainer>
-          <p>{props.error}</p>
-        </ErrorContainer>
-      )
-    }
     const [param, setparam] = useState<string>('')
     const [selectedCategory, setselectedCategory] = useState('')
     let resolverConfig;
@@ -178,6 +170,14 @@ function AddOffersPage(props:OfferProp) {
         catch(error){
             alert('Unexpected error occured while trying to create new offer')
         }
+    }
+    if(props.error)
+    {
+      return (
+        <ErrorContainer>
+          <p>{props.error}</p>
+        </ErrorContainer>
+      )
     }
   return (
     <HomePageRightColumn>

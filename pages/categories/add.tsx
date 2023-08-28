@@ -30,14 +30,6 @@ function AddCategoryPage(props:addCategoryProp) {
     const handleCategoryChange=(event:React.ChangeEvent<HTMLSelectElement>)=>{
       categoryField.onChange(event.target.value)
     }
-    if(props.error)
-    {
-      return (
-        <ErrorContainer>
-          <p>Unexpected error ocurred: {props.error}</p>
-        </ErrorContainer>
-      )
-    }
   const submitHandler=async (formValues:Record<string, any>)=>{
     const data={
         name: formValues.name,
@@ -66,6 +58,14 @@ function AddCategoryPage(props:addCategoryProp) {
     catch(error){
         alert('Unexpected error occured while trying to add category')
     }
+  }
+  if(props.error)
+  {
+    return (
+      <ErrorContainer>
+        <p>Unexpected error ocurred: {props.error}</p>
+      </ErrorContainer>
+    )
   }
   return (
     <HomePageRightColumn>

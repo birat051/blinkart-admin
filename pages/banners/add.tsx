@@ -40,14 +40,6 @@ type addBannerProp={
 }
 
 function AddBannerPage(props:addBannerProp) {
-    if(props.error)
-    {
-      return (
-        <ErrorContainer>
-          <p>Unexpected error ocurred: {props.error}</p>
-        </ErrorContainer>
-      )
-    }
   const [imageUrl, setimageUrl] = useState('')
   const {register,handleSubmit,formState,reset,control}=useForm({resolver: zodResolver(BannerDetails)})
   const { field: categoryField } = useController({
@@ -122,6 +114,14 @@ function AddBannerPage(props:addBannerProp) {
   const addImageUrl=()=>{
     imageField.onChange(imageUrl)
     setimageUrl('')
+  }
+  if(props.error)
+  {
+    return (
+      <ErrorContainer>
+        <p>Unexpected error ocurred: {props.error}</p>
+      </ErrorContainer>
+    )
   }
   return (
     <HomePageRightColumn>

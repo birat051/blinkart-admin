@@ -33,14 +33,6 @@ type bannerProp={
 
 
 function BannerPage(props:bannerProp) {
-  if(props.error)
-  {
-    return (
-      <ErrorContainer>
-        <p>Unexpected error ocurred: {props.error}</p>
-      </ErrorContainer>
-    )
-  }
   const [bannerList, setbannerList] = useState(props.banners)
   const deleteBanner=async (bannerId:string)=>{
     try{
@@ -107,6 +99,14 @@ function BannerPage(props:bannerProp) {
   catch(error){
       alert('Unexpected error occured while trying to mark banner inactive')
   }
+  }
+  if(props.error)
+  {
+    return (
+      <ErrorContainer>
+        <p>Unexpected error ocurred: {props.error}</p>
+      </ErrorContainer>
+    )
   }
   return (
     <HomePageRightColumn>

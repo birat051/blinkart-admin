@@ -16,14 +16,6 @@ type productPropType={
 }
 
 function ProductsPage(props:productPropType) {
-  if(props.error)
-  {
-    return (
-      <ErrorContainer>
-        <p>Unexpected error ocurred: {props.error}</p>
-      </ErrorContainer>
-    )
-  }
   const [productList, setproductList] = useState(props.products)
   const [selectedProduct, setselectedProduct] = useState('')
   const changeSelectedProduct=(productId:string)=>{
@@ -33,6 +25,14 @@ function ProductsPage(props:productPropType) {
     const newProductList=productList.filter((product)=>newProduct._id!==product._id)
     newProductList.push(newProduct)
     setproductList(newProductList)
+  }
+  if(props.error)
+  {
+    return (
+      <ErrorContainer>
+        <p>Unexpected error ocurred: {props.error}</p>
+      </ErrorContainer>
+    )
   }
   return (
     <HomePageRightColumn>

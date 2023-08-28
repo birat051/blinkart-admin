@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import LoadingOverlayWrapper from 'react-loading-overlay-ts';
+import Head from 'next/head';
 
 export const AddressDetails=z.object({
   email: z.string().email(),
@@ -38,6 +39,9 @@ function LoginPage() {
   }
   return (
     <LoadingOverlayWrapper active={isLoading}>
+      <Head>
+        <title>Login</title>
+      </Head>
     <HomeContentContainer>
         <LoginPageForm onSubmit={handleSubmit(handleFormSubmit)}>
             <label>Email id</label>
@@ -50,7 +54,6 @@ function LoginPage() {
         </LoginPageForm>
     </HomeContentContainer>
     </LoadingOverlayWrapper>
-
   )
 }
 
