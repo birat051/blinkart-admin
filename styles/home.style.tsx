@@ -1,5 +1,6 @@
 import { Bar, Pie } from "react-chartjs-2";
 import styled from "styled-components";
+import { HomePageRightColumn } from "./global.style";
 
 type headingElementType={
     backgroundcolor:string
@@ -120,7 +121,7 @@ export const PieChartContainer=styled.div`
     border: 0.1px solid grey;
     border-radius: 8px;
     height: 300px;
-    max-width: 300px;
+    /* max-width: 300px; */
     @media screen and (max-width: 1300px){
         margin-left: 0rem;
         margin-bottom: 1rem;

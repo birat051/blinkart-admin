@@ -125,10 +125,9 @@ export default function Home(props:homePropType) {
           display: true,
           position: 'top' // You can adjust the position as needed
           }
-          }}}/>
+          }}} style={{maxWidth: '400px'}}/>
           </GraphContainer>
-          <PieChartContainer>
-            
+          <PieChartContainer> 
             <Pie data={orderStatusDataset} options={{aspectRatio:4/3,responsive: true, maintainAspectRatio: false, plugins: {
             legend: {
             display: true,
@@ -137,10 +136,11 @@ export default function Home(props:homePropType) {
            }
            }
            }
+           style={{maxWidth: '400px'}}
            />
           </PieChartContainer>
           <PieChartContainer>
-            <Pie data={productCountDataset} options={{aspectRatio:4/3,responsive: true, maintainAspectRatio: false}}/>
+            <Pie data={productCountDataset} options={{aspectRatio:4/3,responsive: true, maintainAspectRatio: false}} style={{maxWidth: '400px'}}/>
           </PieChartContainer>
           </GraphContainerRow>
         </HomePageRightColumn>

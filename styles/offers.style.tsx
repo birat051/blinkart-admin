@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { AddProductForm } from "./addProducts.style";
 
 export const OfferViewContainer=styled.div`
      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Noto+Sans:wght@400;600&display=swap');
@@ -58,4 +59,8 @@ export const OfferListView=styled.div`
         justify-content: flex-start;
         align-items: stretch;
     }
+`
+
+export const OfferForm=styled(AddProductForm)`
+    max-width: none;
 `

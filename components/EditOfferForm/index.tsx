@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import React, { useEffect, useState } from 'react'
 import { useController, useForm } from 'react-hook-form'
 import Image from 'next/image'
+import { OfferForm } from '@/styles/offers.style'
 
 type EditOfferProp={
     offer: Offer,
@@ -131,7 +132,7 @@ function EditOfferForm(props:EditOfferProp) {
       }
   }
   return (
-    <AddProductForm onSubmit={handleSubmit(editOffer)}>
+    <OfferForm onSubmit={handleSubmit(editOffer)}>
         <h2>Edit offer {props.offer.title}</h2>
         <FontAwesomeIcon icon={faClose} style={{width:'15px',height:'15px',color:'grey',position:'absolute',right:'16',top:'16',cursor:'pointer'}} onClick={()=>props.closeEditForm('')}/>
         <label>Title</label>
@@ -189,7 +190,7 @@ function EditOfferForm(props:EditOfferProp) {
         </div>
         {errors.istopoffer && <p>{errors.istopoffer.message?.toString()}</p>}
         <button type="submit">SAVE</button>
-    </AddProductForm>
+    </OfferForm>
   )
 }
 
