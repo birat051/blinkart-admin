@@ -74,9 +74,9 @@ function AddBannerPage(props:addBannerProp) {
     if(productField.value && productField.value.length>0)
     bannerUrl='/products/'+productField.value
     else if(subcategoryField.value && subcategoryField.value.length>0)
-    bannerUrl='/categories/'+subcategoryField.value
+    bannerUrl='/categories/'+subcategoryField.value+'/1'
     else
-    bannerUrl='/categories/'+categoryField.value
+    bannerUrl='/categories/'+categoryField.value+'/1'
     console.log('Banner url is: ',bannerUrl)
     const data={
       title:formValues.title,
