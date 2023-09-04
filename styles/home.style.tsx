@@ -7,6 +7,12 @@ type headingElementType={
 }
 
 
+export const DashboardContainer=styled(HomePageRightColumn)`
+@media screen and (max-width: 600px){
+    align-items: center;
+}
+`
+
 export const HomeHeading=styled.div.attrs((props) => ({
     className: props.className, 
   }))`
@@ -17,7 +23,8 @@ export const HomeHeading=styled.div.attrs((props) => ({
     @media screen and (max-width:600px){
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        width: 100%;
     }
     &.admin{
         grid-template-columns: repeat(4,1fr);  
@@ -52,7 +59,7 @@ export const HomeHeadingElement=styled.div`
         margin-bottom: 1rem;
         text-align: left;
     }
-    @media screen and (max-width:1300px){
+    @media screen and (max-width:1500px){
         h1{
             font-size: 1em;
             /* white-space: nowrap;
@@ -81,7 +88,7 @@ export const GraphContainerRow=styled.div`
     /* max-width: 300px; */
     justify-content: space-between;
     /* max-width: 95%; */
-    @media screen and (max-width: 1300px){
+    @media screen and (max-width: 1500px){
         display: flex;
         width: 100%;
         flex-direction: column;
@@ -93,7 +100,18 @@ export const GraphContainerRow=styled.div`
 `
 
 export const GraphContainer=styled.div`
+ @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+     display: flex;
+     h1{
+        color: black;
+        font-family: 'Inter',sans-serif;
+        font-size: 1em;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-align: left;
+     }
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: white;
@@ -104,26 +122,38 @@ export const GraphContainer=styled.div`
     border-radius: 8px;
     /* max-width: 100%; */
     width: 100%;
-    height: 300px;
+    height: 500px;
     grid-column: 1/2;
-    @media screen and (max-width: 1300px){
+    @media screen and (max-width: 1500px){
         margin-left: 0rem;
         /* width: 100%; */
         margin-bottom: 1rem;
+        max-width: 350px;
     }
 `
 
 export const PieChartContainer=styled.div`
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
      display: flex;
+     h1{
+        color: black;
+        font-family: 'Inter',sans-serif;
+        font-size: 1em;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-align: left;
+     }
+     /* flex-direction: column; */
     align-items: center;
     justify-content: center;
     background-color: white;
     border: 0.1px solid grey;
     border-radius: 8px;
-    height: 300px;
+    height: 500px;
     /* max-width: 300px; */
-    @media screen and (max-width: 1300px){
+    @media screen and (max-width: 1500px){
         margin-left: 0rem;
         margin-bottom: 1rem;
+        max-width: 350px;
     }
 `

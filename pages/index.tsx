@@ -7,7 +7,7 @@ import OrderModel, { Order, ProductOrder } from '@/models/order_model'
 import connectToDatabase from '@/util/connectDB'
 import ProductDataModel from '@/models/product_model'
 import ProductUserDataModel from '@/models/product_user_model'
-import {  GraphContainer, GraphContainerRow, HomeHeading, HomeHeadingElement, PieChartContainer } from '@/styles/home.style'
+import {  DashboardContainer, GraphContainer, GraphContainerRow, HomeHeading, HomeHeadingElement, PieChartContainer } from '@/styles/home.style'
 import { Bar,Pie } from 'react-chartjs-2'
 import { useState } from 'react'
 import Chart from 'chart.js/auto';
@@ -63,7 +63,7 @@ export default function Home(props:homePropType) {
     borderWidth: 2
   }
   const orderStatusDataset={
-      label: props.orderStatusList.map((data)=>data.label),
+      labels: props.orderStatusList.map((data)=>data.label),
       datasets: [{
         label: 'Order Status',
         data: props.orderStatusList.map((data)=>data.value)
@@ -82,7 +82,7 @@ export default function Home(props:homePropType) {
     }
   ]
   const productCountDataset={
-    label: productCountData.map((data)=>data.label),
+    labels: productCountData.map((data)=>data.label),
     datasets: [{
       label: 'Product Stock Status',
       data: productCountData.map((data)=>data.value),
@@ -99,7 +99,7 @@ export default function Home(props:homePropType) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <HomePageRightColumn>
+        <DashboardContainer>
           <HomeHeading className={(session?.user as CustomUser).role==='seller'?'':'admin'}>
             <HomeHeadingElement backgroundcolor='#7A3AED'>
               <h2>Total Sales Amount</h2>
@@ -120,7 +120,7 @@ export default function Home(props:homePropType) {
           </HomeHeading>
           <GraphContainerRow>
           <GraphContainer>
-          <Bar data={revenueDataset} options={{aspectRatio:4/3,responsive: true, maintainAspectRatio: false, plugins: {
+          <Bar data={revenueDataset} options={{responsive: true, maintainAspectRatio: false, plugins: {
           legend: {
           display: true,
           position: 'top' // You can adjust the position as needed
@@ -128,7 +128,8 @@ export default function Home(props:homePropType) {
           }}} style={{maxWidth: '400px'}}/>
           </GraphContainer>
           <PieChartContainer> 
-            <Pie data={orderStatusDataset} options={{aspectRatio:4/3,responsive: true, maintainAspectRatio: false, plugins: {
+          {/* <h1>Order Status</h1> */}
+            <Pie data={orderStatusDataset} options={{responsive: true, maintainAspectRatio: false, plugins: {
             legend: {
             display: true,
             position: 'top' // You can adjust the position as needed
@@ -140,10 +141,16 @@ export default function Home(props:homePropType) {
            />
           </PieChartContainer>
           <PieChartContainer>
-            <Pie data={productCountDataset} options={{aspectRatio:4/3,responsive: true, maintainAspectRatio: false}} style={{maxWidth: '400px'}}/>
+            {/* <h1>Product Count</h1> */}
+            <Pie data={productCountDataset} options={{responsive: true, maintainAspectRatio: false,plugins: {
+          legend: {
+          display: true,
+          position: 'top' // You can adjust the position as needed
+          }
+          }}} style={{maxWidth: '400px'}}/>
           </PieChartContainer>
           </GraphContainerRow>
-        </HomePageRightColumn>
+        </DashboardContainer>
     </>
   )
 }
