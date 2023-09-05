@@ -140,15 +140,15 @@ export default function Home(props:homePropType) {
            style={{maxWidth: '400px'}}
            />
           </PieChartContainer>
-          <PieChartContainer>
+          {/* <PieChartContainer> */}
             {/* <h1>Product Count</h1> */}
-            <Pie data={productCountDataset} options={{responsive: true, maintainAspectRatio: false,plugins: {
+            {/* <Pie data={productCountDataset} options={{responsive: true, maintainAspectRatio: false,plugins: {
           legend: {
           display: true,
           position: 'top' // You can adjust the position as needed
           }
           }}} style={{maxWidth: '400px'}}/>
-          </PieChartContainer>
+          </PieChartContainer> */}
           </GraphContainerRow>
         </DashboardContainer>
     </>

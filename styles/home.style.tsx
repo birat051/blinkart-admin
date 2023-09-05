@@ -82,13 +82,13 @@ export const HomeHeadingElement=styled.div`
 
 export const GraphContainerRow=styled.div`
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     column-gap: 1rem;
     /* flex-direction: row; */
     /* max-width: 300px; */
     justify-content: space-between;
     /* max-width: 95%; */
-    @media screen and (max-width: 1500px){
+    @media screen and (max-width: 1300px){
         display: flex;
         width: 100%;
         flex-direction: column;
@@ -124,7 +124,7 @@ export const GraphContainer=styled.div`
     width: 100%;
     height: 500px;
     grid-column: 1/2;
-    @media screen and (max-width: 1500px){
+    @media screen and (max-width: 1300px){
         margin-left: 0rem;
         /* width: 100%; */
         margin-bottom: 1rem;
@@ -151,7 +151,7 @@ export const PieChartContainer=styled.div`
     border-radius: 8px;
     height: 500px;
     /* max-width: 300px; */
-    @media screen and (max-width: 1500px){
+    @media screen and (max-width: 1300px){
         margin-left: 0rem;
         margin-bottom: 1rem;
         max-width: 350px;
