@@ -1,38 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Blinkart Admin Panel
+Full-Stack Admin panel for Flipkart clone
 
-## Getting Started
+[Visit now](https://blinkart-admin.vercel.app/)🚀
 
-First, run the development server:
+## 🖥️ Tech Stack
+![reactjs](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)&nbsp;
+![nextjs](https://github.com/birat051/blinkart/assets/79505216/7cd1b47a-29c4-4ab6-a7c8-69bd8b749036)&nbsp;
+![mongodb](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)&nbsp;
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+**Deployed On:**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![vercel](https://github.com/birat051/blinkart/assets/79505216/28f1f675-7bcb-4143-9ef0-faa23ce9c54d)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 🚀 Features
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+1. Dashboard with metrics: Total user,products and orders. Visual representation of Revenue growth and Order status
+2. Seller: Add/Update Products | Mark products out of stock
+3. Admin: Add/Update Sellers | Update seller credentials
+4. Admin: Add/Update/Delete Banners | Mark as active/inactive
+5. Admin: Add/Update/Delete Offers
+6. Admin: Add/Update Categories
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Sneak Peek of Dashboard:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![Capture](https://github.com/birat051/blinkart-admin/assets/79505216/263ccc5b-6d27-40bc-b901-6ea0c9f16ed6)
 
-## Learn More
+<table>
+  <tr>
+    <td><img src="https://github.com/birat051/blinkart-admin/assets/79505216/55d5f810-cd9e-4f91-ada8-38011a4b97da" alt="mockup" /></td>
+    <td><img src="https://github.com/birat051/blinkart-admin/assets/79505216/c4cd65f2-c3f6-4fbe-9027-7bb809d56a0f" alt="mockup" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/birat051/blinkart-admin/assets/79505216/e95fb19d-2146-4d5b-b036-eb37abbbcd9e" alt="mockup" /></td>
+    <td><img src="https://github.com/birat051/blinkart-admin/assets/79505216/ce50e7a5-7ce4-4d49-8450-18cf5001c9b6" alt="mockups" /></td>
+  </tr>
+</table>
 
-To learn more about Next.js, take a look at the following resources:
+<h2>📬 Contact</h2>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+If you want to contact me, you can reach me through below handles.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+[![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/biratbhattacharjee)
 
-## Deploy on Vercel
+© 2023 Birat Bhattacharjee
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
